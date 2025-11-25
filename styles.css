@@ -1,0 +1,184 @@
+/* FlipFlix Styles */
+
+.netflix-block-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2147483647 !important;
+  /* Max z-index */
+  background-color: #e50914;
+  /* Red background for visibility */
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 6px 12px;
+  /* Larger padding */
+  font-size: 14px;
+  /* Larger font */
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  /* Hidden by default, shown on hover */
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-block-unhide-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2147483647 !important;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Black background */
+  color: white;
+  border: 1px solid white;
+  /* White border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  /* Hidden by default */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-block-unhide-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* Lighter hover */
+}
+
+/* Specific positioning for Bob (expanded) cards */
+.bob-card .netflix-block-btn {
+  top: 20px;
+  /* Move down a bit */
+  left: 20px;
+  /* Move right a bit */
+  right: auto;
+  opacity: 1 !important;
+  /* Force visible */
+  padding: 8px 16px;
+  /* Even larger */
+  font-size: 16px;
+  background-color: #e50914;
+  /* Red background (User request) */
+  border: 2px solid white;
+  /* White border */
+}
+
+/* Integrated button styles (when inside the button row) */
+.netflix-block-btn-integrated {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 10 !important;
+  /* Lower z-index as it's in the flow */
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Integrated Unhide button - hidden by default */
+.netflix-block-unhide-btn.netflix-block-btn-integrated {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 10 !important;
+  margin-left: 10px;
+  display: none;
+  /* Hidden by default */
+  vertical-align: middle;
+}
+
+/* Show integrated Unhide button when hidden */
+.netflix-block-hidden .netflix-block-unhide-btn.netflix-block-btn-integrated,
+.netflix-block-hidden:hover .netflix-block-unhide-btn.netflix-block-btn-integrated {
+  display: inline-block !important;
+}
+
+.bob-card:hover .netflix-block-btn {
+  opacity: 1 !important;
+}
+
+/* Show buttons when hovering over the card */
+.slider-item:hover .netflix-block-btn,
+.title-card-container:hover .netflix-block-btn,
+[data-uia="slider-item"]:hover .netflix-block-btn,
+[data-uia="title-card"]:hover .netflix-block-btn {
+  opacity: 1;
+}
+
+.netflix-block-btn:hover {
+  background-color: #e50914;
+}
+
+/* Hidden State Styles */
+.netflix-block-hidden {
+  /* Removed filter from container so it doesn't affect buttons/text */
+  opacity: 1;
+  /* Keep opacity 1 so it's visible enough to hover */
+  pointer-events: auto;
+  /* Allow interaction */
+}
+
+/* Apply filter to images and videos inside the hidden card */
+.netflix-block-hidden img,
+.netflix-block-hidden video {
+  filter: grayscale(100%) brightness(0.2);
+  transition: filter 0.3s ease;
+}
+
+/* When hidden and hovered, make the media visible again but keep it dim */
+.netflix-block-hidden:hover img,
+.netflix-block-hidden:hover video {
+  filter: grayscale(0%) brightness(0.5);
+  /* Restore color but keep it dark (0.5) */
+}
+
+/* When hidden, hide the normal "Hide" button */
+.netflix-block-hidden .netflix-block-btn,
+.netflix-block-hidden .netflix-block-btn-integrated {
+  display: none !important;
+}
+
+/* When hidden and hovered, show the "Unhide" button */
+.netflix-block-hidden:hover .netflix-block-unhide-btn {
+  display: block;
+}
+
+.netflix-block-unhide-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Event Shield to block Netflix hover effects */
+.netflix-block-shield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  /* Above content, below buttons (z-index 9999) */
+  background: transparent;
+  display: none;
+}
+
+/* Show shield when hidden */
+.netflix-block-hidden .netflix-block-shield {
+  display: block;
+}
+
+/* Flip Animation Class */
+.netflix-block-flipping {
+  transform: scaleX(0) !important;
+  transition: transform 0.15s ease-in !important;
+}
+
+/* Ensure the card has a transition when returning to normal */
+.slider-item,
+.title-card-container,
+.bob-card {
+  transition: transform 0.15s ease-out;
+}
