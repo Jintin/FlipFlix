@@ -2,6 +2,11 @@
 
 **FlipFlix** is a Chrome Extension that allows you to hide movies and TV shows on Netflix that you've already watched or aren't interested in. It provides a seamless, integrated experience with smooth animations and intuitive controls.
 
+## Demo
+
+[![FlipFlix Demo](http://img.youtube.com/vi/-6mFxQwTNDI/0.jpg)](http://www.youtube.com/watch?v=-6mFxQwTNDI)
+
+
 ## Features
 
 *   **Hide Content**: Hover over any movie or show card to reveal a **"Hide"** button. Click it to dim the content.
